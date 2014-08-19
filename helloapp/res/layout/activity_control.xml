@@ -8,6 +8,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal" >
 
         <Button
@@ -24,6 +25,7 @@
     </LinearLayout>
 
     <LinearLayout
+         android:layout_marginTop="20dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -43,6 +45,7 @@
     </LinearLayout>
 
     <LinearLayout
+         android:layout_marginTop="20dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

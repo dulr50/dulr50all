@@ -45,6 +45,8 @@ public class ControlActivity extends Activity implements OnClickListener {
 		
 		button3Open.setOnClickListener(this);
 		button3Close.setOnClickListener(this);
+		
+		initUDP();
 	}
 	
 	private UdpHelper udphelper;
@@ -65,24 +67,25 @@ public class ControlActivity extends Activity implements OnClickListener {
 
 		switch(v.getId()) {
 		case R.id.button1Open:
-			send(1,1);
-			break;
-		case R.id.button1Close:
 			send(1,0);
 			break;
-		case R.id.button2Open:
-			send(2,1);
+		case R.id.button1Close:
+			send(1,1);
 			break;
-		case R.id.button2Close:
+		case R.id.button2Open:
 			send(2,0);
 			break;
+		case R.id.button2Close:
+			send(2,1);
+			break;
 		case R.id.button3Open:
-			send(3,1);
+			send(0,0);
 			break;
 		case R.id.button3Close:
-			send(3,0);
+			send(0,1);
 			break;
 		}
+//		 tReceived.start();
 	}
 	
 	void send(final int port, final int state) {

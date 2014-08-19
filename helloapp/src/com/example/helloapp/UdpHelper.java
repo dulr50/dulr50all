@@ -30,7 +30,12 @@ public class UdpHelper implements Runnable {
 
 	public void StartListen() {
 		// UDP服务器监听的端口
-		Integer port = 8903;
+	    // http://www.binkery.com/post/266.html
+	    // 原因呢，是端口号不能低于1024，据说是Linux的问题。这个待考证吧。
+	    // Either root your phone, modify the firmware, 
+	    // or don't bind to ports lower than 1024. 
+	    // That's a Linux thing more than an Android thing.
+		Integer port = 9880;
 		// 接收的字节大小，客户端发送的数据不能超过这个大小
 		byte[] message = new byte[100];
 		try {
@@ -43,6 +48,7 @@ public class UdpHelper implements Runnable {
 				while (!IsThreadDisable) {
 					// 准备接收数据
 					Log.d("UDP Demo", "准备接受");
+//					this.lock.release();
 					this.lock.acquire();
 
 					datagramSocket.receive(datagramPacket);
