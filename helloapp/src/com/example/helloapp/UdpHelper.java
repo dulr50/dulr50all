@@ -67,7 +67,7 @@ public class UdpHelper implements Runnable {
  */
 	public static void send(String message) {
 		message = (message == null ? "Hello IdeasAndroid!" : message);
-		int server_port = 8904;
+		int server_port = 988;
 		Log.d("UDP Demo", "UDP·¢ËÍÊý¾Ý:" + message);
 		DatagramSocket s = null;
 		try {
