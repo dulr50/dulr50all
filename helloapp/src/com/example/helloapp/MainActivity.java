@@ -1,5 +1,6 @@
 package com.example.helloapp;
 
+import com.example.helloapp.service.HelloService;
 import com.utils.inject.From;
 import com.utils.inject.Injector;
 
@@ -53,6 +54,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		the_curtain_control.setOnClickListener(this);
 		supervisory_control.setOnClickListener(this);
 		
+		Intent intent = new Intent(this, HelloService.class);
+	    startService(intent);  
 	}
 	
 

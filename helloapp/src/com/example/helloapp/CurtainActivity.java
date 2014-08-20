@@ -17,86 +17,74 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 public class CurtainActivity extends BaseActivity implements OnClickListener {
-	
-	
+
 	@From(R.id.curtain_back)
 	ImageView curtain_back;
-	
+
 	@From(R.id.curtain_open)
 	ImageView curtain_open;
 	@From(R.id.curtain_suspend)
 	ImageView curtain_suspend;
-	
+
 	@From(R.id.curtain_close)
 	ImageView curtain_close;
 	@From(R.id.curtain_close2)
 	ImageView curtain_close2;
 
-	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_curtain);
-		 
+
 		curtain_back.setOnClickListener(this);
-		
+
 		curtain_open.setOnClickListener(this);
 		curtain_suspend.setOnClickListener(this);
-		
-		curtain_close.setOnClickListener(this);
-		
-	}
-	
 
+		curtain_close.setOnClickListener(this);
+
+	}
 
 	@Override
 	public void onClick(View v) {
 
-		switch(v.getId()) {
+		switch (v.getId()) {
 		case R.id.curtain_back:
 			finish();
 			break;
 		case R.id.curtain_open:
-			send(1,0);
+			send(1, 0);
 			// TODO
 			break;
 		case R.id.curtain_suspend:
-			send(1,1);
-			send(2,1);
+			send(1, 1);
+			send(2, 1);
 			break;
 		case R.id.curtain_close:
-			
-			send(2,0);
+
+			send(2, 0);
 			break;
 		}
 	}
+
 	
-	private UdpHelper udphelper;
-	private Thread tReceived;
-	void initUDP(){//用于创建线程
-        WifiManager manager = (WifiManager) this
-                .getSystemService(Context.WIFI_SERVICE);
-        udphelper = new UdpHelper(manager);
-        
-        //传递WifiManager对象，以便在UDPHelper类里面使用MulticastLock
-//        udphelper.addObserver(MsgReceiveService.this);
-        tReceived = new Thread(udphelper);
-        tReceived.start();
-    }
+
 	/**
 	 * 
-	 * @param port 0,1,2 jidianqi
-	 * @param state   open 0, close 1.
+	 * @param port
+	 *            0,1,2 jidianqi
+	 * @param state
+	 *            open 0, close 1.
 	 */
 	void send(final int port, final int state) {
-		 new Thread(){  
-	            public void run(){  
-//	            	UdpHelper.send("RELAY_CTL=admin,3,0");
-	            	UdpHelper.send("RELAY_CTL=admin,"+port+","+state); 
-	            }  
-	        }.start();  
+		new Thread() {
+			public void run() {
+				// UdpHelper.send("RELAY_CTL=admin,3,0");
+				
+				UdpHelper.send("RELAY_CTL=admin," + port + "," + state);
+				
+			}
+		}.start();
 	}
 }
- 

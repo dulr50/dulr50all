@@ -25,53 +25,53 @@ public class UdpHelper implements Runnable {
 	InetAddress mInetAddress;
 
 	static final int UDP_PORT = 9880;
+
 	public UdpHelper(WifiManager manager) {
 		this.lock = manager.createMulticastLock("UDPwifi");
 	}
-
+	DatagramSocket datagramSocket = null;
 	public void StartListen() {
 		// UDP服务器监听的端口
-	    // http://www.binkery.com/post/266.html
-	    // 原因呢，是端口号不能低于1024，据说是Linux的问题。这个待考证吧。
-	    // Either root your phone, modify the firmware, 
-	    // or don't bind to ports lower than 1024. 
-	    // That's a Linux thing more than an Android thing.
 		Integer port = UDP_PORT;
 		// 接收的字节大小，客户端发送的数据不能超过这个大小
 		byte[] message = new byte[100];
+		
 		try {
 			// 建立Socket连接
-			DatagramSocket datagramSocket = new DatagramSocket(port);
+			datagramSocket = new DatagramSocket(port);
 			datagramSocket.setBroadcast(true);
 			DatagramPacket datagramPacket = new DatagramPacket(message,
 					message.length);
 			try {
-				while (!IsThreadDisable) {
-					// 准备接收数据
-					Log.d("UDP Demo", "准备接受");
-//					this.lock.release();
-					this.lock.acquire();
+				 while (!IsThreadDisable) {
+				// 准备接收数据
+				Log.d("UDP Demo", "准备接受");
+				// this.lock.release();
+				this.lock.acquire();
 
-					datagramSocket.receive(datagramPacket);
-					String strMsg = new String(datagramPacket.getData()).trim();
-					Log.d("UDP Demo", datagramPacket.getAddress()
-							.getHostAddress().toString()
-							+ ":" + strMsg);
-					this.lock.release();
-				}
+				datagramSocket.receive(datagramPacket);
+				String strMsg = new String(datagramPacket.getData()).trim();
+				Log.d("UDP Demo", datagramPacket.getAddress().getHostAddress()
+						.toString()
+						+ ":" + strMsg);
+				this.lock.release();
+				 }
 			} catch (IOException e) {// IOException
 				e.printStackTrace();
 			}
 		} catch (SocketException e) {
 			e.printStackTrace();
-		}
-
+		} 
 	}
 
-/**
- * 
- * @param message
- */
+	public void closeSocket() {
+		if(datagramSocket!=null) datagramSocket.close();
+		if(lock.isHeld()) lock.release();
+	}
+	/**
+	 * 
+	 * @param message
+	 */
 	public static void send(String message) {
 		message = (message == null ? "Hello IdeasAndroid!" : message);
 		int server_port = UDP_PORT;
@@ -93,7 +93,7 @@ public class UdpHelper implements Runnable {
 		DatagramPacket p = new DatagramPacket(messageByte, msg_length, local,
 				server_port);
 		try {
-
+ 
 			s.send(p);
 			s.close();
 
@@ -102,9 +102,8 @@ public class UdpHelper implements Runnable {
 		}
 	}
 
-
 	@Override
 	public void run() {
-		StartListen();
+		 StartListen();
 	}
 }
