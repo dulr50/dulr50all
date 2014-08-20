@@ -24,6 +24,7 @@ public class UdpHelper implements Runnable {
 	private static WifiManager.MulticastLock lock;
 	InetAddress mInetAddress;
 
+	static final int UDP_PORT = 9880;
 	public UdpHelper(WifiManager manager) {
 		this.lock = manager.createMulticastLock("UDPwifi");
 	}
@@ -35,7 +36,7 @@ public class UdpHelper implements Runnable {
 	    // Either root your phone, modify the firmware, 
 	    // or don't bind to ports lower than 1024. 
 	    // That's a Linux thing more than an Android thing.
-		Integer port = 9880;
+		Integer port = UDP_PORT;
 		// 接收的字节大小，客户端发送的数据不能超过这个大小
 		byte[] message = new byte[100];
 		try {
@@ -73,7 +74,7 @@ public class UdpHelper implements Runnable {
  */
 	public static void send(String message) {
 		message = (message == null ? "Hello IdeasAndroid!" : message);
-		int server_port = 988;
+		int server_port = UDP_PORT;
 		Log.d("UDP Demo", "UDP发送数据:" + message);
 		DatagramSocket s = null;
 		try {

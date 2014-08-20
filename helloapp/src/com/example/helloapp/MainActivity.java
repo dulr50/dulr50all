@@ -65,8 +65,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 			startApp("com.broadlink.rmt", "com.broadlink.rmt.activity.LoadingActivity");
 			break;
 		case R.id.curtain_control:
-//			startApp("x.p2p.cam", "x1.Studio.Ali.Start");
-			// TODO
+			Intent intent = new Intent(this, CurtainActivity.class);
+		    startActivity(intent);
 			break;
 		case R.id.background_misic:
 			startApp("com.kugou.android", "com.kugou.android.app.splash.SplashActivity");
