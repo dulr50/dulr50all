@@ -52,7 +52,7 @@ public class SoftActivity extends Activity implements Runnable ,OnItemClickListe
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_soft);
 		setTitle("文件管理器");
 		
 		mContext = this;

@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class ControlActivity extends Activity implements OnClickListener {
+public class ControlActivity extends BaseActivity implements OnClickListener {
 	
 	
 	@From(R.id.button1Open)
@@ -35,7 +35,6 @@ public class ControlActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_control);
-		Injector.inject(this);
 		
 		button1Open.setOnClickListener(this);
 		button1Close.setOnClickListener(this);
