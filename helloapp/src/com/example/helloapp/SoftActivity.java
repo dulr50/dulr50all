@@ -202,6 +202,7 @@ public class SoftActivity extends Activity implements Runnable ,OnItemClickListe
 		String pkg = res.activityInfo.packageName;
 		String cls = res.activityInfo.name;
 		
+		Log.d("onItemClick", pkg+"/"+cls);
 		ComponentName componet = new ComponentName(pkg, cls);
 		
 		Intent i = new Intent();

@@ -4,10 +4,12 @@ import com.utils.inject.From;
 import com.utils.inject.Injector;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
@@ -60,34 +62,39 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
 		switch(v.getId()) {
 		case R.id.home_appliance_control:
-			send(1,0);
+			startApp("com.broadlink.rmt", "com.broadlink.rmt.activity.LoadingActivity");
 			break;
 		case R.id.curtain_control:
-			send(1,1);
+//			startApp("x.p2p.cam", "x1.Studio.Ali.Start");
+			// TODO
 			break;
 		case R.id.background_misic:
-			send(2,0);
+			startApp("com.kugou.android", "com.kugou.android.app.splash.SplashActivity");
+//			startApp("unc.android.umusic", "unc.android.umusic.LoadingActivity");
 			break;
 		case R.id.multi_screen_control:
-			send(2,1);
+			startApp("com.bubblesoft.android.bubbleupnp", "com.bubblesoft.android.bubbleupnp.MainActivity");
+//			startApp("com.pv.twonkybeam", "com.pv.twonkybeam.BeamLauncher");
 			break;
 		case R.id.the_curtain_control:
-			send(0,0);
+//			startApp("x.p2p.cam", "x1.Studio.Ali.Start");
+			// TODO
 			break;
 		case R.id.supervisory_control:
-			send(0,1);
+			startApp("x.p2p.cam", "x1.Studio.Ali.Start");
 			break;
 		}
 //		 tReceived.start();
 	}
 	
-	void send(final int port, final int state) {
-//		 new Thread(){  
-//	            public void run(){  
-////	            	UdpHelper.send("RELAY_CTL=admin,3,0");
-//	            	UdpHelper.send("RELAY_CTL=admin,"+port+","+state); 
-//	            }  
-//	        }.start();  
+	void startApp(final String pkg, final String cls) {
+
+		Log.d("startApp", pkg+"/"+cls);
+		ComponentName componet = new ComponentName(pkg, cls);
+		
+		Intent i = new Intent();
+		i.setComponent(componet);
+		startActivity(i);
 	}
 }
  
