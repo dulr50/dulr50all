@@ -7,8 +7,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import com.example.helloapp.R;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ComponentName;
@@ -55,14 +53,14 @@ public class SoftActivity extends Activity implements Runnable ,OnItemClickListe
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_soft);
-		setTitle("ÎÄ¼ş¹ÜÀíÆ÷");
+		setTitle("æ–‡ä»¶ç®¡ç†å™¨");
 		
 		mContext = this;
     	mPackageManager = getPackageManager();
     	
 		softlist = (ListView) findViewById(R.id.softlist);
 
-		 pd = ProgressDialog.show(this, "ÇëÉÔºò..", "ÕıÔÚÊÕ¼¯Èí¼şĞÅÏ¢...", true,false);
+		 pd = ProgressDialog.show(this, "è¯·ç¨å€™..", "æ­£åœ¨æ”¶é›†è½¯ä»¶ä¿¡æ¯...", true,false);
 		 Thread thread = new Thread(this);
 	     thread.start();
 
@@ -73,12 +71,12 @@ public class SoftActivity extends Activity implements Runnable ,OnItemClickListe
 		//
 		
 		
-		{//ÓÃÓÚ´´½¨Ïß³Ì
+		{//ç”¨äºåˆ›å»ºçº¿ç¨‹
 	        WifiManager manager = (WifiManager) this
 	                .getSystemService(Context.WIFI_SERVICE);
 	        udphelper = new UdpHelper(manager);
 	        
-	        //´«µİWifiManager¶ÔÏó£¬ÒÔ±ãÔÚUDPHelperÀàÀïÃæÊ¹ÓÃMulticastLock
+	        //ä¼ é€’WifiManagerå¯¹è±¡ï¼Œä»¥ä¾¿åœ¨UDPHelperç±»é‡Œé¢ä½¿ç”¨MulticastLock
 //	        udphelper.addObserver(MsgReceiveService.this);
 	        tReceived = new Thread(udphelper);
 	        tReceived.start();
@@ -89,16 +87,16 @@ public class SoftActivity extends Activity implements Runnable ,OnItemClickListe
 		//
 	}
 	/**
-	 * ¼ì²éÏµÍ³Ó¦ÓÃ³ÌĞò£¬Ìí¼Óµ½Ó¦ÓÃÁĞ±íÖĞ
+	 * æ£€æŸ¥ç³»ç»Ÿåº”ç”¨ç¨‹åºï¼Œæ·»åŠ åˆ°åº”ç”¨åˆ—è¡¨ä¸­
 	 */
 	private void bindMsg(){
-		//Ó¦ÓÃ¹ıÂËÌõ¼ş
+		//åº”ç”¨è¿‡æ»¤æ¡ä»¶
     	Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
         mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
     	mAllApps = mPackageManager.queryIntentActivities(mainIntent, 0);
     	softlist.setAdapter(new MyAdapter(mContext, mAllApps));
     	softlist.setOnItemClickListener(this);
-    	//°´±¨ÃûÅÅĞò
+    	//æŒ‰æŠ¥åæ’åº
         Collections.sort(mAllApps, new ResolveInfo.DisplayNameComparator(mPackageManager));
         
 	}
@@ -160,7 +158,7 @@ public class SoftActivity extends Activity implements Runnable ,OnItemClickListe
 	       //     view = convertView ;  
 	            holder = (ViewHolder) convertView.getTag() ;  
 	        }  
-	        //»ñÈ¡Ó¦ÓÃ³ÌĞò°üÃû£¬³ÌĞòÃû³Æ£¬³ÌĞòÍ¼±ê
+	        //è·å–åº”ç”¨ç¨‹åºåŒ…åï¼Œç¨‹åºåç§°ï¼Œç¨‹åºå›¾æ ‡
 	        res = resInfo.get(position);
 	        holder.appIcon.setImageDrawable(res.loadIcon(mPackageManager));  
 	        holder.tvAppLabel.setText(res.loadLabel(mPackageManager).toString());
@@ -181,7 +179,7 @@ public class SoftActivity extends Activity implements Runnable ,OnItemClickListe
 			return convertView;*/
 		}
     }
-    //Éè¶¨½çÃæ²¼¾Ö
+    //è®¾å®šç•Œé¢å¸ƒå±€
     class ViewHolder {  
         ImageView appIcon;  
         TextView tvAppLabel;  
@@ -194,13 +192,13 @@ public class SoftActivity extends Activity implements Runnable ,OnItemClickListe
         }  
     }  
     /**
-     * µ¥»÷Ó¦ÓÃ³ÌĞòºó½øÈëÏµÍ³Ó¦ÓÃ¹ÜÀí½çÃæ
+     * å•å‡»åº”ç”¨ç¨‹åºåè¿›å…¥ç³»ç»Ÿåº”ç”¨ç®¡ç†ç•Œé¢
      */
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 		
 		ResolveInfo res = mAllApps.get(position);
-		//¸ÃÓ¦ÓÃµÄ°üÃûºÍÖ÷Activity
+		//è¯¥åº”ç”¨çš„åŒ…åå’Œä¸»Activity
 		String pkg = res.activityInfo.packageName;
 		String cls = res.activityInfo.name;
 		

@@ -11,41 +11,34 @@ import java.util.Observable;
 import android.net.wifi.WifiManager;
 import android.util.Log;
 
-/**
- * 
- * UdpHelper°ïÖúÀà
- * 
- * @author ³Â†´éÅ
- * 
- */
 
 public class UdpHelper implements Runnable {
-	public Boolean IsThreadDisable = false;// Ö¸Ê¾¼àÌıÏß³ÌÊÇ·ñÖÕÖ¹
+	public Boolean IsThreadDisable = false;// æŒ‡ç¤ºç›‘å¬çº¿ç¨‹æ˜¯å¦ç»ˆæ­¢
 	private static WifiManager.MulticastLock lock;
 	InetAddress mInetAddress;
 
-	static final int UDP_PORT = 9880;
+	static final int UDP_PORT = 988;
 
 	public UdpHelper(WifiManager manager) {
 		this.lock = manager.createMulticastLock("UDPwifi");
 	}
 	DatagramSocket datagramSocket = null;
 	public void StartListen() {
-		// UDP·şÎñÆ÷¼àÌıµÄ¶Ë¿Ú
+		// UDPæœåŠ¡å™¨ç›‘å¬çš„ç«¯å£
 		Integer port = UDP_PORT;
-		// ½ÓÊÕµÄ×Ö½Ú´óĞ¡£¬¿Í»§¶Ë·¢ËÍµÄÊı¾İ²»ÄÜ³¬¹ıÕâ¸ö´óĞ¡
+		// æ¥æ”¶çš„å­—èŠ‚å¤§å°ï¼Œå®¢æˆ·ç«¯å‘é€çš„æ•°æ®ä¸èƒ½è¶…è¿‡è¿™ä¸ªå¤§å°
 		byte[] message = new byte[100];
 		
 		try {
-			// ½¨Á¢SocketÁ¬½Ó
+			// å»ºç«‹Socketè¿æ¥
 			datagramSocket = new DatagramSocket(port);
 			datagramSocket.setBroadcast(true);
 			DatagramPacket datagramPacket = new DatagramPacket(message,
 					message.length);
 			try {
 				 while (!IsThreadDisable) {
-				// ×¼±¸½ÓÊÕÊı¾İ
-				Log.d("UDP Demo", "×¼±¸½ÓÊÜ");
+				// å‡†å¤‡æ¥æ”¶æ•°æ®
+				Log.d("UDP Demo", "å‡†å¤‡æ¥å—");
 				// this.lock.release();
 				this.lock.acquire();
 
@@ -75,7 +68,7 @@ public class UdpHelper implements Runnable {
 	public static void send(String message) {
 		message = (message == null ? "Hello IdeasAndroid!" : message);
 		int server_port = UDP_PORT;
-		Log.d("UDP Demo", "UDP·¢ËÍÊı¾İ:" + message);
+		Log.d("UDP Demo", "UDPå‘é€æ•°æ®:" + message);
 		DatagramSocket s = null;
 		try {
 			s = new DatagramSocket();

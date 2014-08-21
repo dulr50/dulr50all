@@ -1,6 +1,5 @@
 package com.zhihui.zhihuijiating;
 
-import com.example.helloapp.R;
 import com.utils.inject.From;
 import com.utils.inject.Injector;
 
