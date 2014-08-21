@@ -73,9 +73,9 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 			startApp("com.broadlink.rmt",
 					"com.broadlink.rmt.activity.LoadingActivity");
 			break;
-		case R.id.curtain_control:
+		case R.id.curtain_control: {
 			Intent intent = new Intent(this, CurtainActivity.class);
-			startActivity(intent);
+			startActivity(intent);}
 			break;
 		case R.id.background_misic:
 			startApp("com.kugou.android",
@@ -84,9 +84,13 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 			// "unc.android.umusic.LoadingActivity");
 			break;
 		case R.id.multi_screen_control:
-			startApp("com.bubblesoft.android.bubbleupnp",
-					"com.bubblesoft.android.bubbleupnp.MainActivity");
+//			startApp("com.bubblesoft.android.bubbleupnp",
+//					"com.bubblesoft.android.bubbleupnp.MainActivity");
 			// startApp("com.pv.twonkybeam", "com.pv.twonkybeam.BeamLauncher");
+			{
+			Intent intent = new Intent(this, MultiScreenActivity.class);
+			startActivity(intent);
+			}
 			break;
 		case R.id.the_curtain_control:
 			// startApp("x.p2p.cam", "x1.Studio.Ali.Start");
