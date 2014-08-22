@@ -77,10 +77,10 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 			startActivity(intent);}
 			break;
 		case R.id.background_misic:
-			startApp("com.kugou.android",
-					"com.kugou.android.app.splash.SplashActivity");
-			// startApp("unc.android.umusic",
-			// "unc.android.umusic.LoadingActivity");
+//			startApp("com.kugou.android",
+//					"com.kugou.android.app.splash.SplashActivity");
+			 startApp("unc.android.umusic",
+			 "unc.android.umusic.LoadingActivity");
 			break;
 		case R.id.multi_screen_control:
 //			startApp("com.bubblesoft.android.bubbleupnp",
