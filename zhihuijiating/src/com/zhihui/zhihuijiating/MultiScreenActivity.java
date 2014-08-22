@@ -52,6 +52,10 @@ public class MultiScreenActivity extends BaseActivity implements OnClickListener
 					"com.bubblesoft.android.bubbleupnp.MainActivity");
 			break;
 		case R.id.office_documents:
+
+          startApp("cn.wps.moffice_i18n",
+          "cn.wps.moffice.documentmanager.PreStartActivity");
+
 //	        startApp("com.microsoft.office.officehub",
 //                    "com.microsoft.office.officehub.OHubAppLaunchActivity");
 			break;
