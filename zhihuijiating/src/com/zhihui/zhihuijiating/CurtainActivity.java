@@ -54,6 +54,7 @@ public class CurtainActivity extends BaseActivity implements OnClickListener {
 			finish();
 			break;
 		case R.id.curtain_open:
+			send(2, 1);
 			send(1, 0);
 			// TODO
 			break;
@@ -62,7 +63,7 @@ public class CurtainActivity extends BaseActivity implements OnClickListener {
 			send(2, 1);
 			break;
 		case R.id.curtain_close:
-
+			send(1, 1);
 			send(2, 0);
 			break;
 		}
