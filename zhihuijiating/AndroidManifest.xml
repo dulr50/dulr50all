@@ -50,6 +50,10 @@
         
         <activity
             android:name="com.zhihui.zhihuijiating.MainActivity"
+            android:label="@string/app_name" />
+
+        <activity
+            android:name="com.zhihui.zhihuijiating.StartUpActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

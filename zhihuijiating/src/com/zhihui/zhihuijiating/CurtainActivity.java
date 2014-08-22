@@ -56,7 +56,6 @@ public class CurtainActivity extends BaseActivity implements OnClickListener {
 		case R.id.curtain_open:
 			send(2, 1);
 			send(1, 0);
-			// TODO
 			break;
 		case R.id.curtain_suspend:
 			send(1, 1);
