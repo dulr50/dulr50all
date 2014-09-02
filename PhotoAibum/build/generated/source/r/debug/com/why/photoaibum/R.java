@@ -21,17 +21,16 @@ public final class R {
         public static final int ssp_queding_btn=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000b;
+        public static final int action_settings=0x7f08000a;
         public static final int album_gridview=0x7f080000;
         public static final int btn_sure=0x7f080004;
-        public static final int gl_bottom=0x7f080005;
-        public static final int iv_show_big_pic=0x7f08000a;
+        public static final int iv_show_big_pic=0x7f080009;
         public static final int ll_bottom=0x7f080003;
         public static final int photo_gridview=0x7f080002;
-        public static final int photo_img_view=0x7f080006;
-        public static final int photo_select=0x7f080007;
-        public static final int photoalbum_item_image=0x7f080008;
-        public static final int photoalbum_item_name=0x7f080009;
+        public static final int photo_img_view=0x7f080005;
+        public static final int photo_select=0x7f080006;
+        public static final int photoalbum_item_image=0x7f080007;
+        public static final int photoalbum_item_name=0x7f080008;
         public static final int rl_shuju=0x7f080001;
     }
     public static final class layout {

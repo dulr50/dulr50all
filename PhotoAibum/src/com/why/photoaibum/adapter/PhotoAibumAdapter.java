@@ -53,7 +53,8 @@ public class PhotoAibumAdapter extends BaseAdapter {
 			holder = (ViewHolder)convertView.getTag();
 		}
 		/** 通过ID 获取缩略图*/
-		Bitmap bitmap = MediaStore.Images.Thumbnails.getThumbnail(context.getContentResolver(), aibumList.get(position).getBitmap(), Thumbnails.MICRO_KIND, null);
+		Bitmap bitmap = MediaStore.Images.Thumbnails.getThumbnail(context.getContentResolver(),
+                aibumList.get(position).getBitmap(), Thumbnails.MICRO_KIND, null);
 		holder.iv.setImageBitmap(bitmap);
 		holder.tv.setText(aibumList.get(position).getName()+" ( "+ aibumList.get(position).getCount()+" )");
 		return convertView;

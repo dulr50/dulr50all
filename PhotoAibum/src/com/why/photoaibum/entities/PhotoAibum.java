@@ -11,16 +11,16 @@ public class PhotoAibum implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private String name;   //相册名字
-	private String count; //数量
+	private int count = 0; //数量
 	private int  bitmap;  // 相册第一张图片
-	
+	public int checkCount = 0;
 	private List<PhotoItem> bitList = new ArrayList<PhotoItem>();
 	
 	public PhotoAibum() {
 	}
 	
 	
-	public PhotoAibum(String name, String count, int bitmap) {
+	public PhotoAibum(String name, int count, int bitmap) {
 		super();
 		this.name = name;
 		this.count = count;
@@ -44,10 +44,10 @@ public class PhotoAibum implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCount() {
+	public int getCount() {
 		return count;
 	}
-	public void setCount(String count) {
+	public void setCount(int count) {
 		this.count = count;
 	}
 	public int getBitmap() {

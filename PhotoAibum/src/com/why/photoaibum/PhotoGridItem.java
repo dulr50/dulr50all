@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Checkable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -36,8 +37,11 @@ public class PhotoGridItem extends RelativeLayout implements Checkable {
 //		mSelect.setImageDrawable(getResources().getDrawable(R.drawable.cb_on));
 		mSelect.setImageDrawable(checked ? getResources().getDrawable(R.drawable.cb_on) : getResources().getDrawable(R.drawable.cb_normal));
 		//mSelect.setVisibility(checked?View.VISIBLE:View.GONE);
-	}   
-	
+	}
+    public void setCheckVisiable(boolean visiable) {
+
+        mSelect.setVisibility(visiable ? View.VISIBLE : View.GONE);
+    }
 	@Override
 	public boolean isChecked() {
 		return mCheck;

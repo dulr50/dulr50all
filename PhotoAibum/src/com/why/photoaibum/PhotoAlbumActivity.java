@@ -88,12 +88,12 @@ public class PhotoAlbumActivity extends Activity{
 				pa = new PhotoAibum();
 				pa.setName(dir);
 				pa.setBitmap(Integer.parseInt(id));
-				pa.setCount("1");
+				pa.setCount(1);
 				pa.getBitList().add(new PhotoItem(Integer.valueOf(id),path));
 				countMap.put(dir_id, pa);
 			} else {
 				pa = countMap.get(dir_id);
-				pa.setCount(String.valueOf(Integer.parseInt(pa.getCount()) + 1));
+				pa.setCount(pa.getCount() + 1);
 				pa.getBitList().add(new PhotoItem(Integer.valueOf(id),path));
 			}
 		}
