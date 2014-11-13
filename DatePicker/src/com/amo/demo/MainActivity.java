@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				datePickWheelDialog = new DatePickWheelDialog.Builder(
 						MainActivity.this)
-						.setPositiveButton("È·¶¨", new View.OnClickListener() {
+						.setPositiveButton("ç¡®å®š", new View.OnClickListener() {
 
 							@Override
 							public void onClick(View v) {
@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
 								tv.setText(getFormatTime(c));
 								datePickWheelDialog.dismiss();
 							}
-						}).setTitle("ÇëÑ¡ÔñÈÕÆÚÓëÊ±¼ä").setNegativeButton("È¡Ïû", null)
+						}).setTitle("è¯·é€‰æ‹©æ—¥æœŸä¸æ—¶é—´").setNegativeButton("å–æ¶ˆ", null)
 						.create();
 				datePickWheelDialog.show();
 			}
@@ -51,7 +51,7 @@ public class MainActivity extends Activity {
 	public static String getFormatTime(Calendar c) {
 		String parten = "00";
 		DecimalFormat decimal = new DecimalFormat(parten);
-		// ÉèÖÃÈÕÆÚµÄÏÔÊ¾
+		// è®¾ç½®æ—¥æœŸçš„æ˜¾ç¤º
 		Calendar calendar = c;
 		int year = calendar.get(Calendar.YEAR);
 		int month = calendar.get(Calendar.MONTH);

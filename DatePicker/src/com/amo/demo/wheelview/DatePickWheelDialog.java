@@ -1,6 +1,6 @@
 /*
  *  Copyright 2012 by Handsomedylan
- *	Ê¹ÓÃAlertDialogµÄË¼Â·½øĞĞÁË·â×°ß÷,Í¬Ê±ÒÔºÏÊÊµÄ×ÖÌå×ÔÊÊÓ¦¸÷ÖÖÆÁÄ»¡£
+ *	ä½¿ç”¨AlertDialogçš„æ€è·¯è¿›è¡Œäº†å°è£…å–µ,åŒæ—¶ä»¥åˆé€‚çš„å­—ä½“è‡ªé€‚åº”å„ç§å±å¹•ã€‚
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -30,7 +30,8 @@ import android.widget.Button;
 
 public class DatePickWheelDialog extends Dialog {
 
-	private static int START_YEAR = 1990, END_YEAR = 2100;
+	private static int START_YEAR = Calendar.getInstance().get(Calendar.YEAR)//1990
+			, END_YEAR = START_YEAR+12;//2100;
 	private WheelView wv_year;
 	private WheelView wv_month;
 	private WheelView wv_day;
@@ -77,7 +78,7 @@ public class DatePickWheelDialog extends Dialog {
 
 	private void adjustView() {
 		// TODO Auto-generated method stub
-		// ¸ù¾İÆÁÄ»ÃÜ¶ÈÀ´Ö¸¶¨Ñ¡ÔñÆ÷×ÖÌåµÄ´óĞ¡
+		// æ ¹æ®å±å¹•å¯†åº¦æ¥æŒ‡å®šé€‰æ‹©å™¨å­—ä½“çš„å¤§å°
 		int textSize = 0;
 
 		textSize = pixelsToDip(mContext.getResources(), 13);
@@ -98,7 +99,7 @@ public class DatePickWheelDialog extends Dialog {
 		// TODO Auto-generated method stub
 		wv_year.addChangingListener(wheelListener_year);
 		wv_month.addChangingListener(wheelListener_month);
-		// È¡Ïû
+		// å–æ¶ˆ
 		if (negativeClickListener != null) {
 			btn_cancel.setOnClickListener(negativeClickListener);
 		} else {
@@ -123,30 +124,31 @@ public class DatePickWheelDialog extends Dialog {
 
 	private void findView() {
 		// TODO Auto-generated method stub
-		// Äê
+		// å¹´
 		wv_year = (WheelView) findViewById(R.id.year);
-		wv_year.setAdapter(new NumericWheelAdapter(START_YEAR, END_YEAR));// ÉèÖÃ"Äê"µÄÏÔÊ¾Êı¾İ
-		wv_year.setLabel("Äê");// Ìí¼ÓÎÄ×Ö
+		wv_year.setAdapter(new NumericWheelAdapter(START_YEAR, END_YEAR));// è®¾ç½®"å¹´"çš„æ˜¾ç¤ºæ•°æ®
+		wv_year.setLabel("å¹´");// æ·»åŠ æ–‡å­—
+		wv_year.setCyclic(false);
 
-		// ÔÂ
+		// æœˆ
 		wv_month = (WheelView) findViewById(R.id.month);
 		wv_month.setAdapter(new NumericWheelAdapter(1, 12));
-		wv_month.setLabel("ÔÂ");
+		wv_month.setLabel("æœˆ");
 
-		// ÈÕ
+		// æ—¥
 		wv_day = (WheelView) findViewById(R.id.day);
-		// ÅĞ¶Ï´óĞ¡ÔÂ¼°ÊÇ·ñÈòÄê,ÓÃÀ´È·¶¨"ÈÕ"µÄÊı¾İ
-		wv_day.setLabel("ÈÕ");
+		// åˆ¤æ–­å¤§å°æœˆåŠæ˜¯å¦é—°å¹´,ç”¨æ¥ç¡®å®š"æ—¥"çš„æ•°æ®
+		wv_day.setLabel("æ—¥");
 
-		// Ê±
+		// æ—¶
 		wv_hours = (WheelView) findViewById(R.id.hour);
 		wv_hours.setAdapter(new NumericWheelAdapter(0, 23));
-		wv_hours.setLabel("Ê±");
+		wv_hours.setLabel("æ—¶");
 
-		// ·Ö
+		// åˆ†
 		wv_mins = (WheelView) findViewById(R.id.mins);
 		wv_mins.setAdapter(new NumericWheelAdapter(0, 59, "%02d"));
-		wv_mins.setLabel("·Ö");
+		wv_mins.setLabel("åˆ†");
 
 		btn_sure = (Button) findViewById(R.id.btn_datetime_sure);
 		if (positiveText != null) {
@@ -160,12 +162,12 @@ public class DatePickWheelDialog extends Dialog {
 		}
 	}
 
-	// Ìí¼Ó"Äê"¼àÌı
+	// æ·»åŠ "å¹´"ç›‘å¬
 	private final OnWheelChangedListener wheelListener_year = new OnWheelChangedListener() {
 		@Override
 		public void onChanged(WheelView wheel, int oldValue, int newValue) {
 			int year_num = newValue + START_YEAR;
-			// ÅĞ¶Ï´óĞ¡ÔÂ¼°ÊÇ·ñÈòÄê,ÓÃÀ´È·¶¨"ÈÕ"µÄÊı¾İ
+			// åˆ¤æ–­å¤§å°æœˆåŠæ˜¯å¦é—°å¹´,ç”¨æ¥ç¡®å®š"æ—¥"çš„æ•°æ®
 			if (list_big
 					.contains(String.valueOf(wv_month.getCurrentItem() + 1))) {
 				wv_day.setAdapter(new NumericWheelAdapter(1, 31));
@@ -181,12 +183,12 @@ public class DatePickWheelDialog extends Dialog {
 			}
 		}
 	};
-	// Ìí¼Ó"ÔÂ"¼àÌı
+	// æ·»åŠ "æœˆ"ç›‘å¬
 	private final OnWheelChangedListener wheelListener_month = new OnWheelChangedListener() {
 		@Override
 		public void onChanged(WheelView wheel, int oldValue, int newValue) {
 			int month_num = newValue + 1;
-			// ÅĞ¶Ï´óĞ¡ÔÂ¼°ÊÇ·ñÈòÄê,ÓÃÀ´È·¶¨"ÈÕ"µÄÊı¾İ
+			// åˆ¤æ–­å¤§å°æœˆåŠæ˜¯å¦é—°å¹´,ç”¨æ¥ç¡®å®š"æ—¥"çš„æ•°æ®
 			if (list_big.contains(String.valueOf(month_num))) {
 				wv_day.setAdapter(new NumericWheelAdapter(1, 31));
 			} else if (list_little.contains(String.valueOf(month_num))) {
@@ -230,14 +232,14 @@ public class DatePickWheelDialog extends Dialog {
 		int hour = calendar.get(Calendar.HOUR_OF_DAY);
 		int minute = calendar.get(Calendar.MINUTE);
 
-		wv_year.setCurrentItem(year - START_YEAR);// ³õÊ¼»¯Ê±ÏÔÊ¾µÄÊı¾İ
+		wv_year.setCurrentItem(year - START_YEAR);// åˆå§‹åŒ–æ—¶æ˜¾ç¤ºçš„æ•°æ®
 		wv_month.setCurrentItem(month);
 		if (list_big.contains(String.valueOf(month + 1))) {
 			wv_day.setAdapter(new NumericWheelAdapter(1, 31));
 		} else if (list_little.contains(String.valueOf(month + 1))) {
 			wv_day.setAdapter(new NumericWheelAdapter(1, 30));
 		} else {
-			// ÈòÄê
+			// é—°å¹´
 			if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
 				wv_day.setAdapter(new NumericWheelAdapter(1, 29));
 			else
