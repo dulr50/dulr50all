@@ -40,5 +40,13 @@
         android:layout_height="wrap_content"
         android:progressDrawable="@drawable/player_setting_bright_progressbar"
         android:thumb="@drawable/player_settings_bright_thumb" />
-
+<Switch  
+        android:id="@+id/open"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:thumb="@drawable/seekbar_thumb" 
+        android:background="#ff0000"
+        android:track="@drawable/seekbar_thumb" 
+        android:textOff="蓝牙关闭中"  
+        android:textOn="蓝牙开启中" />  
 </LinearLayout>
